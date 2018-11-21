@@ -1,5 +1,6 @@
 module Ahoy
   class VisitsController < BaseController
+    binding.pry
     def create
       ahoy.track_visit
 
