@@ -1,7 +1,8 @@
 module Ahoy
   class VisitsController < BaseController
     def create
-      puts ahoy.inspect  
+      puts "Testing"
+      binding.pry
       ahoy.track_visit
 
       render json: {
