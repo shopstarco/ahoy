@@ -7,6 +7,8 @@ module Ahoy
     attr_reader :request, :controller
 
     def initialize(**options)
+      puts "init"
+      binding.pry
       @store = Ahoy::Store.new(options.merge(ahoy: self))
       @controller = options[:controller]
       @request = options[:request] || @controller.try(:request)
@@ -47,7 +49,8 @@ module Ahoy
           set_cookie("ahoy_track", true, nil, false)
         else
           delete_cookie("ahoy_track")
-
+      puts "track_visit testing"
+      binding.pry
           data = {
             visit_token: visit_token,
             visitor_token: visitor_token,
@@ -129,6 +132,8 @@ module Ahoy
 
     # TODO better name
     def visit_properties
+            puts "visit prop testing"
+      binding.pry
       @visit_properties ||= Ahoy::VisitProperties.new(request, api: api?).generate
     end
 
